@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	
+	<title>Task Manager</title>
+	
+</head>
+
+<body>
+	<div class="container">
+		
+		<hr>
+		<h1>Task Manager</h1>
+		<hr>
+		
+		<p class="h3 mb-3">Create new task</p>
+		
+		<form action="#" th:action="@{/tasks/save}"
+						 th:object="${task}" method="post">
+						 
+			 <!-- Hidden form field for update operations -->
+			 <input type="hidden" th:field="*{id}"> 
+			
+			 <input type="text" th:field="*{title}"
+			 class="form-control mb-4 col-4" placeholder="Title">
+			 
+			 <input type="text" th:field="*{description}"
+			 class="form-control mb-4 col-4" placeholder="Description">
+			 
+			 <input type="date" th:field="*{date}"
+			 class="form-control mb-4 col-4" value="2019-09-17">
+			 
+			 <button type="submit" class="btn btn-outline-primary mb-4 col-4">Save task</button>
+			 
+		</form>
+		
+		<hr>
+		<a th:href="@{/tasks/list}">Return to main page</a>
+		
+	</div>
+</body>
+
+</html>
