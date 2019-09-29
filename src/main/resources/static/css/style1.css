@@ -1,0 +1,12 @@
+body {
+	background-color: lightgray;
+}
+
+a {
+	font-size: 3vh;
+	text-decoration: none;
+	color: black;
+}
+.container h1 {
+	color: red;
+}

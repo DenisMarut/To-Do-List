@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.myproject.app.ToDoList.JpaRepository.TasksRepository;
+import com.myproject.app.ToDoList.JpaRepository.TasksRepositoryArchive;
 import com.myproject.app.ToDoList.entity.Tasks;
+import com.myproject.app.ToDoList.entity.TasksArchive;
 
 @Service
 public class TaskServiceImpl implements TaskService{
@@ -15,10 +17,13 @@ public class TaskServiceImpl implements TaskService{
 	// Inject JpaRepository (old DAO)
 	
 	private TasksRepository theTasksRepository;
+	
+	private TasksRepositoryArchive theTasksRepositoryArchive;
 
 	@Autowired
-	public TaskServiceImpl(TasksRepository theTasksRepository) {
+	public TaskServiceImpl(TasksRepository theTasksRepository, TasksRepositoryArchive theTasksRepositoryArchive) {
 		this.theTasksRepository = theTasksRepository;
+		this.theTasksRepositoryArchive = theTasksRepositoryArchive;
 	}
 
 	//Bring CRUD methods given by JpaRepository
@@ -62,6 +67,22 @@ public class TaskServiceImpl implements TaskService{
 		
 		theTasksRepository.deleteById(theId);
 	}
+
+	@Override
+	public List<TasksArchive> showArchivedTasks() {
+
+		return theTasksRepositoryArchive.findAll();
+	}
+
+
+	@Override
+	public void archive(TasksArchive theTaskArchived) {
+		
+		theTasksRepositoryArchive.save(theTaskArchived);
+	}
+
+
+
 	
 	
 }

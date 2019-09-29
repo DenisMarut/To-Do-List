@@ -15,8 +15,8 @@ import javax.validation.constraints.Size;
 
 
 @Entity
-@Table(name = "tasks")
-public class Tasks {
+@Table(name = "tasks_arch")
+public class TasksArchive {
 
 	//Define fields and map them to MySql table
 	
@@ -36,18 +36,18 @@ public class Tasks {
 	private Date date;
 	
 	// Constructors
-	public Tasks() {
+	public TasksArchive() {
 		
 	}
 
-	public Tasks(int id, String title, String description, Date date) {
+	public TasksArchive(int id, String title, String description, Date date) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
 		this.date = date;
 	}
 
-	public Tasks(String title, String description, Date date) {
+	public TasksArchive(String title, String description, Date date) {
 		this.title = title;
 		this.description = description;
 		this.date = date;

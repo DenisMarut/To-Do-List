@@ -9,6 +9,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    	<!-- Reference css file -->
+	<link rel="stylesheet" th:href="@{/css/style1.css}" />
 	
 	<title>Task Manager</title>
 	
@@ -43,7 +46,7 @@
 		</form>
 		
 		<hr>
-		<a th:href="@{/tasks/list}">Return to main page</a>
+		<a th:href="@{/tasks/list}">>> Return to main page <<</a>
 		
 	</div>
 </body>

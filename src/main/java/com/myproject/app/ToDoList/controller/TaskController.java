@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.myproject.app.ToDoList.entity.Tasks;
+import com.myproject.app.ToDoList.entity.TasksArchive;
 import com.myproject.app.ToDoList.service.TaskService;
 
 @Controller
@@ -34,6 +35,17 @@ public class TaskController {
 		
 		return "tasks/task-list";
 	}
+	
+	@GetMapping("/archive")
+	public String listOfArchivedTasks(Model theModel)
+	{
+		List<TasksArchive> theTasksArchived = theTaskService.showArchivedTasks();
+		
+		theModel.addAttribute("tasksArchived", theTasksArchived);
+		
+		return "tasks/task-arch-list";
+	}
+	
 	
 	//Add mapping for "/add"
 	@GetMapping("/add")
@@ -79,6 +91,22 @@ public class TaskController {
 		theTaskService.deleteById(theId);
 		
 		//Redirect to main page (list of tasks)
+		return "redirect:/tasks/list";
+	}
+	
+	@GetMapping("/arch")
+	public String archiveTask(@RequestParam("taskId") int theId, Model theModel)
+	{
+		
+		//Get the existing task from table (tasks)
+		Tasks theTask = theTaskService.findById(theId);
+		
+		// save this task to another table (tasks_arch)
+		theTaskService.archive(theTask);
+		
+		//delete the task from table (tasks)
+		theTaskService.deleteById(theId);
+		
 		return "redirect:/tasks/list";
 	}
 }
