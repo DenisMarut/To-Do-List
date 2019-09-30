@@ -41,6 +41,7 @@ public class TaskServiceImpl implements TaskService{
 		Optional<Tasks> result = theTasksRepository.findById(theId);
 		
 		Tasks theTask = null;
+		
 		if (result.isPresent())
 		{
 			//if value is not null
@@ -79,6 +80,13 @@ public class TaskServiceImpl implements TaskService{
 	public void archive(TasksArchive theTaskArchived) {
 		
 		theTasksRepositoryArchive.save(theTaskArchived);
+	}
+
+
+	@Override
+	public void saveToArch(TasksArchive theTask) {
+		
+		theTasksRepositoryArchive.save(theTask);
 	}
 
 

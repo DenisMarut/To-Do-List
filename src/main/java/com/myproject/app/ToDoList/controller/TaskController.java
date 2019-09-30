@@ -101,8 +101,20 @@ public class TaskController {
 		//Get the existing task from table (tasks)
 		Tasks theTask = theTaskService.findById(theId);
 		
+		//theTask.getTitle();
+		//theTask.getDate();
+		//theTask.getDescription();
+		
+		TasksArchive theTaskArch = new TasksArchive();
+		
+		theTaskArch.setId(0);
+		theTaskArch.setTitle(theTask.getTitle());
+		theTaskArch.setDescription(theTask.getDescription());
+		theTaskArch.setDate(theTask.getDate());
 		// save this task to another table (tasks_arch)
-		theTaskService.archive(theTask);
+		theTaskService.saveToArch(theTaskArch);
+		
+		//theTaskService.archive(theTask);
 		
 		//delete the task from table (tasks)
 		theTaskService.deleteById(theId);

@@ -19,6 +19,7 @@ public interface TaskService {
 	
 	public List<TasksArchive> showArchivedTasks();
 	
+	public void saveToArch(TasksArchive theTask);
 	
 	public void archive(TasksArchive theTaskArchived);
 	
