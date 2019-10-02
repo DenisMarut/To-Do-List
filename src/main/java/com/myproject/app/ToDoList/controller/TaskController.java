@@ -114,7 +114,6 @@ public class TaskController {
 		// save this task to another table (tasks_arch)
 		theTaskService.saveToArch(theTaskArch);
 		
-		//theTaskService.archive(theTask);
 		
 		//delete the task from table (tasks)
 		theTaskService.deleteById(theId);

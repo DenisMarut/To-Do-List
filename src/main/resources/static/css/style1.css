@@ -1,5 +1,5 @@
 body {
-	background-color: lightgray;
+	background-color: #CECECE;
 }
 
 a {
@@ -8,5 +8,6 @@ a {
 	color: black;
 }
 .container h1 {
-	color: red;
+	color: black;
 }
+
